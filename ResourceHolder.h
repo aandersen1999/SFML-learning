@@ -8,10 +8,7 @@ namespace Textures
 {
 	enum ID
 	{
-		Background,
-		Player,
-		Enemies,
-		Bullets
+		Ship,
 	};
 }
 
@@ -19,12 +16,16 @@ template <typename Resource, typename Identifier>
 class ResourceHolder
 {
 public:
+	
+public:
 	void load(Identifier id, const string& filename);
+	
+	Resource& get(Identifier id);
+	Resource& get(Identifier id) const;
 	template<typename Parameter>
 	void load(Identifier id, const string& filename, const Parameter& secondParameter);
-	Resource& get(Identifier id);
-	const Resource& get(Identifier id) const;
 private:
 	map<Identifier, unique_ptr<Resource>> mResourceMap;
 };
 
+typedef ResourceHolder<sf::Texture, Textures::ID> TextureHolder;

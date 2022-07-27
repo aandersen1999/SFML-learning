@@ -1,19 +1,22 @@
 #pragma once
 #include "Entity.h"
+#include "ResourceHolder.h"
+#include <SFML/Graphics.hpp>
+#include <map>
+#include <iostream>
+
 
 class Aircraft : public Entity
 {
 public:
 	enum Type
 	{
-		Eagle,
-		Raptor
+		Eagle
 	};
 public:
-	explicit Aircraft(Type type);
+	Aircraft(Aircraft::Type type, TextureHolder& textures);
 	virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
 private:
-	Type mType;
+	Aircraft::Type mType;
 	sf::Sprite mSprite;
 };
-

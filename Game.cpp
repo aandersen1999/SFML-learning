@@ -10,6 +10,7 @@ Game::Game() : mWindow(sf::VideoMode(640, 480), "Test") , mPlayer()
 
 void Game::run()
 {
+
 	while (mWindow.isOpen())
 	{
 		processEvents();
