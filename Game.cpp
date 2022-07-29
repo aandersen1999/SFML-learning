@@ -6,6 +6,7 @@ Game::Game() : mWindow(sf::VideoMode(640, 480), "Test") , mPlayer()
 	mPlayer.setRadius(40.0f);
 	mPlayer.setPosition(100.0f, 100.0f);
 	mPlayer.setFillColor(sf::Color::Cyan);
+	
 }
 
 void Game::run()

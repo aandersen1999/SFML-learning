@@ -14,5 +14,6 @@ public:
 
 private:
 	sf::Vector2f mVelocity;
+	virtual void updateCurrent(sf::Time dt);
 };
 

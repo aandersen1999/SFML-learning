@@ -1,7 +1,7 @@
 #include "ResourceHolder.h"
 #include <assert.h>
 
-template <typename Resource, typename Identifier>
+template <typename Resource, class Identifier>
 void ResourceHolder<Resource, Identifier>::load(Identifier id, const string& filename)
 {
 	unique_ptr<Resource> resource(new Resource());
@@ -13,12 +13,12 @@ void ResourceHolder<Resource, Identifier>::load(Identifier id, const string& fil
 	assert(inserted.second);
 }
 
-template <typename Resource, typename Identifier>
+template <typename Resource, class Identifier>
 template <typename Parameter>
-void ResourceHolder<Resource, Identifier>::load(Identifier id, const string& filename, const Parameter& secondParam)
+void ResourceHolder<Resource, Identifier>::load(Identifier id, const string& filename, const Parameter& secondParameter)
 {
 	unique_ptr<Resource> resource(new Resource());
-	if (!resource->loadFromFile(filename, secondParam))
+	if (!resource->loadFromFile(filename, secondParameter))
 	{
 		throw runtime_error("ResourceHolder::load - Failed to load " + filename);
 	}
@@ -26,7 +26,7 @@ void ResourceHolder<Resource, Identifier>::load(Identifier id, const string& fil
 	assert(inserted.second);
 }
 
-template <typename Resource, typename Identifier>
+template <typename Resource, class Identifier>
 Resource& ResourceHolder<Resource, Identifier>::get(Identifier id)
 {
 	auto found = mResourceMap.find(id);
@@ -35,8 +35,8 @@ Resource& ResourceHolder<Resource, Identifier>::get(Identifier id)
 	return *found->second;
 }
 
-template <typename Resource, typename Identifier>
-Resource& ResourceHolder<Resource, Identifier>::get(Identifier id) const
+template <typename Resource, class Identifier>
+const inline Resource& ResourceHolder<Resource, Identifier>::get(Identifier id) const
 {
 	auto found = mResourceMap.find(id);
 	assert(found != mResourceMap.end());

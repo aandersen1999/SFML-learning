@@ -10,20 +10,29 @@ namespace Textures
 	{
 		Ship,
 	};
+
+	enum Layer
+	{
+		Background,
+		Air,
+		LayerCount
+	};
 }
 
-template <typename Resource, typename Identifier>
+template <typename Resource, class Identifier>
 class ResourceHolder
 {
-public:
 	
+public:
+	template<typename Parameter>
+	void load(Identifier id, const string& filename, const Parameter& secondParameter);
 public:
 	void load(Identifier id, const string& filename);
 	
 	Resource& get(Identifier id);
-	Resource& get(Identifier id) const;
-	template<typename Parameter>
-	void load(Identifier id, const string& filename, const Parameter& secondParameter);
+	const inline Resource& get(Identifier id) const;
+	
+	
 private:
 	map<Identifier, unique_ptr<Resource>> mResourceMap;
 };

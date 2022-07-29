@@ -1,8 +1,9 @@
 #include "Aircraft.h"
 #include "ResourceHolder.h"
 #include <SFML/Graphics.hpp>
-#include <map>
-#include <iostream>
+#include "ResourceHolder.cpp"
+
+typedef ResourceHolder<sf::Texture, Textures::ID> TextureHolder;
 
 Textures::ID toTextureID(Aircraft::Type type)
 {
@@ -15,9 +16,10 @@ Textures::ID toTextureID(Aircraft::Type type)
 	}
 }
 
-Aircraft::Aircraft(Type type, TextureHolder& textures) : mType(type)
+Aircraft::Aircraft(Type type, const TextureHolder& textures) : mType(type), mSprite(textures.get(toTextureID(type)))
 {
-	//mSprite.setTexture(textures.get(toTextureID(type)));
+	sf::FloatRect bound = mSprite.getLocalBounds();
+	mSprite.setOrigin(bound.width / 2.0f, bound.height / 2.0f);
 }
 
 

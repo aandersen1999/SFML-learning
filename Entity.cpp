@@ -25,3 +25,8 @@ void Entity::drawCurrent(RenderTarget& target, RenderStates states) const
 {
 
 }
+
+void Entity::updateCurrent(sf::Time dt)
+{
+	move(mVelocity * dt.asSeconds());
+}
