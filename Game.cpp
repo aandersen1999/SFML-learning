@@ -1,11 +1,9 @@
 #include "Game.h"
 #include <SFML/Graphics.hpp>
 
-Game::Game() : mWindow(sf::VideoMode(640, 480), "Test") , mPlayer()
+Game::Game() : mWindow(sf::VideoMode(640, 480), "Test"), mWorld(mWindow)
 {
-	mPlayer.setRadius(40.0f);
-	mPlayer.setPosition(100.0f, 100.0f);
-	mPlayer.setFillColor(sf::Color::Cyan);
+	
 	
 }
 
@@ -48,7 +46,9 @@ void Game::update()
 void Game::render()
 {
 	mWindow.clear();
-	mWindow.draw(mPlayer);
+	mWorld.draw();
+
+	mWindow.setView(mWindow.getDefaultView());
 	mWindow.display();
 }
 

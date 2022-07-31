@@ -9,13 +9,7 @@ namespace Textures
 	enum ID
 	{
 		Ship,
-	};
-
-	enum Layer
-	{
-		Background,
-		Air,
-		LayerCount
+		Desert
 	};
 }
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "World.h"
 
 class Game
 {
@@ -15,7 +16,6 @@ private:
 	void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
 
 	sf::RenderWindow mWindow;
-	sf::CircleShape mPlayer;
-	
+	World mWorld;
 };
 
