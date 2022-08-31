@@ -54,5 +54,5 @@ void Game::render()
 
 void Game::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 {
-	
+	if(key == sf::Keyboard::W)
 }

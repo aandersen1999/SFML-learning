@@ -20,7 +20,7 @@ void World::loadTextures()
 
 void World::buildScene()
 {
-	for (std::size_t i = 0; i < LayerCount; i++)
+	for (std::size_t i = 0; i < LayerCount; ++i)
 	{
 		SceneNode::Ptr layer(new SceneNode());
 		mSceneLayers[i] = layer.get();
@@ -30,10 +30,10 @@ void World::buildScene()
 
 	sf::Texture& texture = mTextures.get(Textures::Desert);
 	sf::IntRect textureRect(mWorldBounds);
-	texture.setRepeated(true);
+	//texture.setRepeated(true);
 
 	std::unique_ptr<SpriteNode> backgroundSprite(new SpriteNode(texture, textureRect));
-	backgroundSprite->setPosition(mWorldBounds.left, mWorldBounds.top);
+	backgroundSprite->setPosition(mSpawnPosition);
 	mSceneLayers[Background]->attachChild(std::move(backgroundSprite));
 
 	std::unique_ptr<Aircraft> leader(new Aircraft(Aircraft::Eagle, mTextures));

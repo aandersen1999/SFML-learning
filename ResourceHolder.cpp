@@ -36,7 +36,7 @@ Resource& ResourceHolder<Resource, Identifier>::get(Identifier id)
 }
 
 template <typename Resource, class Identifier>
-const inline Resource& ResourceHolder<Resource, Identifier>::get(Identifier id) const
+const Resource& ResourceHolder<Resource, Identifier>::get(Identifier id) const
 {
 	auto found = mResourceMap.find(id);
 	assert(found != mResourceMap.end());
